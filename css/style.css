@@ -1,3 +1,25 @@
+header {
+  background: rgba(0,0,0,0.9);
+  width: 100%;
+  position: fixed;
+  z-index: 100;
+}
+nav {
+  float: left; /* Desplazamos el nav hacia la izquierda */
+}
+
+nav ul {
+  list-style: none;
+  overflow: hidden; /* Limpiamos errores de float */
+}
+
+nav ul li {
+  float: left;
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+}
+
+
 body {
   font-family: "Quicksand", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   background-color: #fff;
@@ -38,10 +60,10 @@ a {
     text-decoration: none !important; }
 
 .hero {
-  height: 100vh;
+  height: 350px;
   width: 100%;
   background-size: cover;
-  background-position: center center;
+  background-position: center ;
   background-repeat: no-repeat; }
 
 .site-navbar {

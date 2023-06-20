@@ -1,7 +1,7 @@
-var btn = document.querySelector('#btn');
+var btn = document.getElementById('btn');
 
-btn.addEventListener('click',function(e){
-    e.preventDefault();
+function logueo(){
     document.cookie = "sesion=true; path=/";
     window.location.href="index.html";
-})
+}
+    

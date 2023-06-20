@@ -9,14 +9,9 @@ contenido.innerHTML +=`<div class="container-fluid">
       <li><a href="index.html" class="nav-link active">Eventos</a></li>
       <li><a href="#" onclick="mostrarModalCrearEvento()">Agregar Eventos</a></li>
        <li><a href="blog.html">Mis eventos</a></li>
-      <li class="has-children">
-        <a href="job-listings.html">Job Listings</a>
-        <ul class="dropdown">
-          <li><a href="job-single.html">Job Single</a></li>
-          <li><a href="post-job.html">Post a Job</a></li>
-        </ul>
-      </li>
-     
+
+
+   
       <li class="has-children">
         <a href="services.html">Pages</a>
         <ul class="dropdown">

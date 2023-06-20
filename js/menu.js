@@ -8,10 +8,22 @@ contenido.innerHTML +=`<div class="container-fluid">
     <ul class="site-menu js-clone-nav d-none d-xl-block ml-0 pl-0">
       <li><a href="index.html" class="nav-link ">Eventos</a></li>
       <li><a href="#" onclick="mostrarModalCrearEvento()">Agregar Eventos</a></li>
+<<<<<<< HEAD
       <li><a href="blog.html">Mis eventos</a></li>
 
 
    
+=======
+       <li><a href="VerEventosPublicador.html">Mis eventos</a></li>
+      <li class="has-children">
+        <a href="job-listings.html">Job Listings</a>
+        <ul class="dropdown">
+          <li><a href="job-single.html">Job Single</a></li>
+          <li><a href="post-job.html">Post a Job</a></li>
+        </ul>
+      </li>
+     
+>>>>>>> c8d4d10e7dee6fad62805c6cf3e29b5aa8b63b49
       <li class="has-children">
         <a href="#">Pages</a>
         <ul class="dropdown">

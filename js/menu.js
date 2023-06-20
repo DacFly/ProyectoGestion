@@ -7,7 +7,7 @@ contenido.innerHTML +=`<div class="container-fluid">
   <nav class="mx-auto site-navigation">
     <ul class="site-menu js-clone-nav d-none d-xl-block ml-0 pl-0">
       <li><a href="index.html" class="nav-link active">Eventos</a></li>
-      <li><a href="#" onclick=onclick="mostrarModalCrearEvento()">Agregar Eventos</a></li>
+      <li><a href="#" onclick="mostrarModalCrearEvento()">Agregar Eventos</a></li>
       <li class="has-children">
         <a href="job-listings.html">Job Listings</a>
         <ul class="dropdown">

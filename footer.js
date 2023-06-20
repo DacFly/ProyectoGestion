@@ -1,8 +1,8 @@
 var contenido = document.querySelector("#footer");
 
-contenido.innerHTML +=` <footer class="bg-dark text-center text-white">
+contenido.innerHTML +=` <footer class="bg-dark text-center text-white fixed-bottom">
 <!-- Grid container -->
-<div class="container p-4 pb-0">
+<div class="container-fluid ">
   <!-- Section: Social media -->
   
   <!-- Section: Social media -->

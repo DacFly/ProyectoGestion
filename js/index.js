@@ -56,7 +56,8 @@ var objetos = [
   }
 ];
 
-// Generar las tarjetas
+
+
 var cardContainer = document.getElementById('card-container');
 
 for (var i = 0; i < objetos.length; i++) {

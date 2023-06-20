@@ -6,14 +6,14 @@ contenido.innerHTML +=`<div class="container-fluid">
 
   <nav class="mx-auto site-navigation">
     <ul class="site-menu js-clone-nav d-none d-xl-block ml-0 pl-0">
-      <li><a href="index.html" class="nav-link active">Eventos</a></li>
+      <li><a href="index.html" class="nav-link ">Eventos</a></li>
       <li><a href="#" onclick="mostrarModalCrearEvento()">Agregar Eventos</a></li>
-       <li><a href="blog.html">Mis eventos</a></li>
+      <li><a href="blog.html">Mis eventos</a></li>
 
 
    
       <li class="has-children">
-        <a href="services.html">Pages</a>
+        <a href="#">Pages</a>
         <ul class="dropdown">
           <li><a href="services.html">Services</a></li>
           <li><a href="service-single.html">Service Single</a></li>
@@ -25,10 +25,8 @@ contenido.innerHTML +=`<div class="container-fluid">
           <li><a href="gallery.html">Gallery</a></li>
         </ul>
       </li>
-      
-      <li><a href="contact.html">Contact</a></li>
-      <li class="d-lg-none"><a href="post-job.html"><span class="mr-2">+</span> Post a Job</a></li>
-      <li class="d-lg-none"><a href="login.html">Log In</a></li>
+
+      <li class="d-lg-none"><a href="login.html">Log Out</a></li>
     </ul>
   </nav>
   

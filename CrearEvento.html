@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <title>Crear Evento</title>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS v5.2.1 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+</head>
+
+<body class="bg-light">
+  <div class="container-fluid">
+    <header>
+      <div id="menu"></div>
+      <script src="menu.js"></script>
+      </header>
+      <main class="d-flex justify-content-center align-items-center" style="min-height: 100vh;">
+        
+        <form class="m-needs-validation" novalidate id="frmEventos">
+            <input type="text" class="form-control" id="m-idEvento" required hidden> 
+            
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label for="" class="form-label">Titulo</label>
+                        <input type="text"
+                          class="form-control" name="evento" id="evento" aria-describedby="helpId" placeholder="Titulo del evento">
+                        <small id="helpId" class="form-text text-muted"> Ingresa el titulo del evento</small>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label for="" class="form-label">Fecha Publicacion</label>
+                        <input type="text"
+                          class="form-control" name="fechaPublicacion" id="fechaPublicacion" aria-describedby="helpId" placeholder="Fecha de Publicacion">
+                        <small id="helpId" class="form-text text-muted"> Ingresa la fecha de publicacion del evento</small>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label for="" class="form-label">Fecha Evento</label>
+                        <input type="text"
+                          class="form-control" name="fechaEvento" id="fechaEvento" aria-describedby="helpId" placeholder="Fecha del evento">
+                        <small id="helpId" class="form-text text-muted"> Ingresa la fecha del evento</small>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label for="" class="form-label">Hora</label>
+                        <input type="text"
+                          class="form-control" name="hora" id="hora" aria-describedby="helpId" placeholder="Hora del evento">
+                        <small id="helpId" class="form-text text-muted"> Ingresa la hora del evento</small>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label for="" class="form-label">Descripcion</label>
+                        <input type="text"
+                          class="form-control" name="descripcion" id="descripcion" aria-describedby="helpId" placeholder="Descripcion del evento">
+                        <small id="helpId" class="form-text text-muted"> Ingresa la descripcion del evento</small>
+                    </div>
+                </div>
+            </div>
+            
+            
+            <div class="form-group form-check p-2" style="text-align: left;">
+                <button type="submit" class="btn btn-primary">
+                    Agregar
+                </button>
+            </div>
+        </form>
+      </main>
+      <footer>
+        <div id="footer"></div>
+      <script src="footer.js"></script>
+      </footer>
+  </div>
+  <!-- Bootstrap JavaScript Libraries -->
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+    integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous">
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
+    integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous">
+  </script>

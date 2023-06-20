@@ -2,3 +2,7 @@ var modalCrearEvento = new bootstrap.Modal(document.getElementById('modalCrearEv
 function mostrarModalCrearEvento(){
     modalCrearEvento.show();
 }
+
+function cerrarModalCrearEvento(){
+    modalCrearEvento.hide();
+}

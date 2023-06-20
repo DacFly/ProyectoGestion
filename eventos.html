@@ -130,9 +130,16 @@
       var cardBody2 = document.createElement('div');
       cardBody2.classList.add('card-body');
       
+      var inscribirseButton = document.createElement('button');
+      inscribirseButton.classList.add('btn', 'btn-primary', 'btn-lg');
+      inscribirseButton.setAttribute('type', 'button');
+      inscribirseButton.textContent = 'Inscribirse';
+      
+      cardBody2.appendChild(inscribirseButton);
       
       card.appendChild(cardBody);
       card.appendChild(listGroup);
+      card.appendChild(cardBody2);
       
       cardColumn.appendChild(card);
       

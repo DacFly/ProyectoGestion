@@ -5,8 +5,5 @@ function mostrarModalCrearEvento(){
 
 function cerrarModalCrearEvento(){
     modalCrearEvento.hide();
-<<<<<<< Updated upstream
 }
-=======
-}
->>>>>>> Stashed changes
+

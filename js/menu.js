@@ -9,20 +9,6 @@ contenido.innerHTML +=`<div class="container-fluid">
       <li><a href="index.html" class="nav-link ">Eventos</a></li>
       <li><a href="#" onclick="mostrarModalCrearEvento()">Agregar Eventos</a></li>
       <li><a href="VerEventosPublicador.html">Mis eventos</a></li>
-      <li class="has-children">
-        <a href="#">Pages</a>
-        <ul class="dropdown">
-          <li><a href="services.html">Services</a></li>
-          <li><a href="service-single.html">Service Single</a></li>
-          <li><a href="blog-single.html">Blog Single</a></li>
-          <li><a href="portfolio.html">Portfolio</a></li>
-          <li><a href="portfolio-single.html">Portfolio Single</a></li>
-          <li><a href="testimonials.html">Testimonials</a></li>
-          <li><a href="faq.html">Frequently Ask Questions</a></li>
-          <li><a href="gallery.html">Gallery</a></li>
-        </ul>
-      </li>
-
       <li class="d-lg-none"><a href="login.html">Log Out</a></li>
     </ul>
   </nav>

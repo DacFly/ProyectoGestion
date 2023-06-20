@@ -15,10 +15,10 @@ contenido.innerHTML +=`
 
 <body>
     <div class="footer-clean">
-        <footer>
+        <footer ">
             <div class="container">
                 <div class="row justify-content-center">
-                    <div class="col-sm-4 col-md-3 item">
+                    <div class="col-sm-3 col-md-4 item">
                         <h3>Servicios</h3>
                         <ul>
                             <li><a href="#">Sitio Web</a></li>
@@ -26,7 +26,7 @@ contenido.innerHTML +=`
                             <li><a href="#">Mis Eventos</a></li>
                         </ul>
                     </div>
-                    <div class="col-sm-4 col-md-3 item">
+                    <div class="col-sm-3 col-md-4 item">
                         <h3>SISEV</h3>
                         <ul>
                             <li><a href="#">Limpeza de playas</a></li>
@@ -34,15 +34,8 @@ contenido.innerHTML +=`
                             <li><a href="#">Sembrar árboles</a></li>
                         </ul>
                     </div>
-                    <div class="col-sm-4 col-md-3 item">
-                        <h3>Eventos</h3>
-                        <ul>
-                            <li><a href="#">Crear Evenos</a></li>
-                            <li><a href="#">Ver Eventos</a></li>
-                            <li><a href="#">Editar Eventos</a></li>
-                        </ul>
-                    </div>
-                    <div class="col-lg-3 item social"><a href="#"><i class="icon ion-social-facebook"></i></a><a href="#"><i class="icon ion-social-twitter"></i></a><a href="#"><i class="icon ion-social-snapchat"></i></a><a href="#"><i class="icon ion-social-instagram"></i></a>
+                   
+                    <div class="col-lg-4 item social"><a href="#"><i class="icon ion-social-facebook"></i></a><a href="#"><i class="icon ion-social-twitter"></i></a><a href="#"><i class="icon ion-social-snapchat"></i></a><a href="#"><i class="icon ion-social-instagram"></i></a>
                         <p class="copyright">SISEV © 2023</p>
                     </div>
                 </div>

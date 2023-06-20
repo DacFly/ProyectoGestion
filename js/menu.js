@@ -33,7 +33,19 @@ contenido.innerHTML +=`<div class="container-fluid">
   <div class="right-cta-menu text-right d-flex aligin-items-center col-6">
     <div class="ml-auto">
     
-      <a href="post-job.html" class="btn btn-outline-white border-width-2 d-none d-lg-inline-block"><span class="mr-2 icon-add"></span>Post a Job</a>
+    <ul class="dropdown">
+    <li><a href="services.html">Services</a></li>
+    <li><a href="service-single.html">Service Single</a></li>
+    <li><a href="blog-single.html">Blog Single</a></li>
+    <li><a href="portfolio.html">Portfolio</a></li>
+    <li><a href="portfolio-single.html">Portfolio Single</a></li>
+    <li><a href="testimonials.html">Testimonials</a></li>
+    <li><a href="faq.html">Frequently Ask Questions</a></li>
+    <li><a href="gallery.html">Gallery</a></li>
+  </ul>
+      <a href="post-job.html" class="btn btn-outline-white border-width-2 d-none d-lg-inline-block  ">
+      
+      </a>
       
       <a href="login.html" class="btn btn-primary border-width-2 d-none d-lg-inline-block"><span class="mr-2 icon-lock_outline"></span>Log In</a>
     </div>

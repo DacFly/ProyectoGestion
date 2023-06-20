@@ -118,8 +118,10 @@ for (var i = 0; i < objetos.length; i++) {
   cardBody2.classList.add('card-body');
   
   var inscribirseButton = document.createElement('button');
-  inscribirseButton.classList.add('btn', 'btn-primary', 'btn-lg');
+  inscribirseButton.classList.add('btn', 'btn-lg');
   inscribirseButton.setAttribute('type', 'button');
+  
+  inscribirseButton.style.backgroundColor = "#9dd1cd";
   inscribirseButton.textContent = 'Inscribirse';
   
   cardBody2.appendChild(inscribirseButton);

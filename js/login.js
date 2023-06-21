@@ -13,14 +13,15 @@ console.log(correo+""+contrasena);
     })
     .then(respuesta => respuesta.json())
     .then(respuesta =>{
-        console.log(respuesta)
-        var usuario = respuesta;
-        sessionStorage.setItem("sesion","true");    
-        sessionStorage.setItem("rol",usuario.rol);  
-        sessionStorage.setItem("nombre",usuario.nombre);    
+        var usuario =respuesta;
+        if(usuario.rol !== undefined ){
+        sessionStorage.setItem("sesion","true");
+        sessionStorage.setItem("rol",usuario.rol);
+        sessionStorage.setItem("nombre",usuario.nombre);
         sessionStorage.setItem("sesion","true"); 
-        sessionStorage.setItem("id",usuario.usuarioId);       
+        sessionStorage.setItem("id",usuario.usuarioId);
         window.location.href="index.html";
+        }
     }).catch(console.log)
     
 }

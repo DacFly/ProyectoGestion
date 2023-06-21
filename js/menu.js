@@ -23,7 +23,7 @@ contenido.innerHTML += `<div class="container-fluid">
                     <li class="has-children">
                       <a href="#" class="div-drop">${sessionStorage.getItem("nombre")}</a>
                       <ul class="dropdown">
-                        <li><a href="services.html">Modificar Perfil</a></li>
+                        <li><a href="modificarPerfil.html">Modificar Perfil</a></li>
                         <li><a href="service-single.html">Eliminar Perfil</a></li>
                         <li><a  onclick="singOut()">Cerrar Sesion</a></li>
                         </li>
@@ -44,23 +44,23 @@ contenido.innerHTML += `<div class="container-fluid">
 
 var modalCrearEvento = new bootstrap.Modal(document.getElementById('modalCrearEvento'))
 
-function mostrarModalCrearEvento(){
-    modalCrearEvento.show();
+function mostrarModalCrearEvento() {
+  modalCrearEvento.show();
 }
 
-function cerrarModalCrearEvento(){
-    modalCrearEvento.hide();
+function cerrarModalCrearEvento() {
+  modalCrearEvento.hide();
 }
 
 function singOut() {
   sessionStorage.setItem("sesion", "false");
-  sessionStorage.setItem("sesion","");    
-  sessionStorage.setItem("rol","");  
-  sessionStorage.setItem("nombre","");         
+  sessionStorage.setItem("sesion", "");
+  sessionStorage.setItem("rol", "");
+  sessionStorage.setItem("nombre", "");
   window.location.href = "login.html";
 }
 
-function crearNuevoEv(){ 
+function crearNuevoEv() {
   var titulo = document.getElementById('evento').value;
   var fechaPublicacion = document.getElementById('fechaPublicacion').value;
   var fechaEvento = document.getElementById('fechaEvento').value;
@@ -69,26 +69,33 @@ function crearNuevoEv(){
   var direccion = document.getElementById('direccion').value;
 
   // Crear el objeto de evento con los valores del formulario
-  var id= parseInt(sessionStorage.getItem("id"));
+  var id = parseInt(sessionStorage.getItem("id"));
   var nuevoEvento = {
     idEvento: 0, // Cambiar el valor del usuarioId según corresponda
-    usuarioId:  id,
-    titulo:titulo,
-    fechaPublicacion:fechaPublicacion,
-    fechaEvento:fechaEvento,
-    hora:hora,
-    descripcion:descripcion,
-    direccion:direccion
+    usuarioId: id,
+    titulo: titulo,
+    fechaPublicacion: fechaPublicacion,
+    fechaEvento: fechaEvento,
+    hora: hora,
+    descripcion: descripcion,
+    direccion: direccion
   };
-    // Realizar la solicitud POST a la API para crear el evento
-    fetch('https://localhost:7088/Evento/CrearEvento',{
-      method:"POST",
-      headers :{"Content-type" : "application/json"} ,
-      body : JSON.stringify(nuevoEvento)
-    }).then(response => { 
-      swal("¡Evento creado!", "El evento ha sido creado exitosamente.", "success");
-      cargarEventos()
-    })
-    .catch( swal("Error", "Ocurrió un error al crear el evento. Por favor, inténtalo nuevamente.", "error"));
+  // Realizar la solicitud POST a la API para crear el evento
+  fetch('https://localhost:7088/Evento/CrearEvento', {
+    method: "POST",
+    headers: { "Content-type": "application/json" },
+    body: JSON.stringify(nuevoEvento)
+  }).then(response => {
+    swal("¡Evento creado!", "El evento ha sido creado exitosamente.", "success");
+    cargarEventos()
+    cerrarModalCrearEvento()
+    document.getElementById('evento').value = '';
+    document.getElementById('fechaPublicacion').value = '';
+    document.getElementById('fechaEvento').value = '';
+    document.getElementById('hora').value = '';
+    document.getElementById('descripcion').value = 'Ingrese descripcion';
+    document.getElementById('direccion').value = '';
+  })
+    .catch(swal("Error", "Ocurrió un error al crear el evento. Por favor, inténtalo nuevamente.", "error"));
 }
 

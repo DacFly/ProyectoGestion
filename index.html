@@ -53,7 +53,6 @@
   </div>
   
 
-
   <div class="modal " id="modalCrearEvento" tabindex="" data-bs-backdrop="static" data-bs-keyboard="false"
     role="dialog" aria-labelledby="modalTitleId" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-md" role="document">
@@ -80,7 +79,7 @@
             <div class="row">
               <div class="col-md-12">
                 <div class="form-group">
-                  <label for="" class="form-label">Titulo</label>
+                  <label for="" class="form-label">Direccion</label>
                   <input type="text" class="form-control" name="evento" id="direccion" aria-describedby="helpId"
                     placeholder="Titulo del evento">
                   <small id="helpId" class="form-text text-muted"> Ingrese direccion </small>
@@ -102,7 +101,7 @@
                 <div class="form-group">
                   <label for="" class="form-label">Fecha Evento</label>
                   <input type="date" class="form-control" name="fechaEvento" id="fechaEvento" aria-describedby="helpId"
-                    placeholder="Fecha del evento"  pattern="\d{4}-\d{2}-\d{2}">
+                    placeholder="Fecha del evento"  pattern="\d{4}-\d{2}-\d{2}" placeholder="YYYY-MM-DD">
                   <small id="helpId" class="form-text text-muted"> Ingresa la fecha del evento</small>
                 </div>
               </div>
@@ -120,7 +119,7 @@
             <div class="row">
               <div class="col-md-12">
                 <div class="form-group text-align-center">
-                    
+                  <textarea name="comentarios" rows="7" cols="60" id="descripcion">Descripcion del Evento</textarea>
                 </div>
               </div>
             </div>

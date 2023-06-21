@@ -24,7 +24,7 @@ contenido.innerHTML += `<div class="container-fluid">
                       <a href="#" class="div-drop">${sessionStorage.getItem("nombre")}</a>
                       <ul class="dropdown">
                         <li><a href="modificarPerfil.html">Modificar Perfil</a></li>
-                        <li><a href="service-single.html">Eliminar Perfil</a></li>
+                        <li><a onclick = "eliminarP()">Eliminar Perfil</a></li>
                         <li><a  onclick="singOut()">Cerrar Sesion</a></li>
                         </li>
                       </ul>
@@ -101,3 +101,43 @@ function crearNuevoEv() {
     .catch(swal("Error", "Ocurrió un error al crear el evento. Por favor, inténtalo nuevamente.", "error"));
 }
 
+
+function eliminarP(idUsuario) {
+  swal({
+    title: "Esta seguro que quiere eliminarlo?",
+    text: "Una vez borrado no se podra recuperar los datos",
+    icon: "warning",
+    buttons: true,
+    dangerMode: true,
+  }).then((willDelete) => {
+    if (willDelete) {
+
+      console.log(idUsuario);
+      var idUsuario = parseInt(sessionStorage.getItem("id"));
+      fetch(
+        "https://localhost:7088/Usuario/BorrarUsuario/" +idUsuario,
+        {
+          method: "DELETE"
+          
+        }
+      ) //url de peticion de datos
+        .then(datosrepuesta => { 
+          if(datosrepuesta.status == 204){
+            swal("Eliminado correctamente", {
+              icon: "success",
+            });
+            singOut()
+          }else{
+            swal("No se borraron los datos");
+          }
+        })
+        .catch(console.log); //muestra errores
+      //Muestra el resultado de la peticion
+    } 
+  });
+
+  var datosenviar = {
+    idUsuario: idUsuario,
+  };
+
+}

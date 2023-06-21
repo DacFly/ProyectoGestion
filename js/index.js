@@ -1,61 +1,4 @@
 
-var objetos = [
-  {
-    titulo: 'Evento',
-    id: 'ID',
-    fechaPublicacion: 'Fecha de publicación',
-    fechaEvento: 'Fecha del evento',
-    hora: 'Hora 1',
-    descripcion: 'Descripción',
-    direccion: 'Dirección'
-  },
-  {
-    titulo: 'Evento',
-    id: 'ID',
-    fechaPublicacion: 'Fecha de publicación',
-    fechaEvento: 'Fecha del evento',
-    hora: 'Hora 1',
-    descripcion: 'Descripción',
-    direccion: 'Dirección'
-  },
-  {
-    titulo: 'Evento',
-    id: 'ID',
-    fechaPublicacion: 'Fecha de publicación',
-    fechaEvento: 'Fecha del evento',
-    hora: 'Hora 1',
-    descripcion: 'Descripción',
-    direccion: 'Dirección'
-  },
-  {
-    titulo: 'Evento',
-    id: 'ID',
-    fechaPublicacion: 'Fecha de publicación',
-    fechaEvento: 'Fecha del evento',
-    hora: 'Hora 1',
-    descripcion: 'Descripción',
-    direccion: 'Dirección'
-  },
-  {
-    titulo: 'Evento',
-    id: 'ID',
-    fechaPublicacion: 'Fecha de publicación',
-    fechaEvento: 'Fecha del evento',
-    hora: 'Hora 1',
-    descripcion: 'Descripción',
-    direccion: 'Dirección'
-  },
-  {
-    titulo: 'Evento',
-    id: 'ID',
-    fechaPublicacion: 'Fecha de publicación',
-    fechaEvento: 'Fecha del evento',
-    hora: 'Hora 1',
-    descripcion: 'Descripción',
-    direccion: 'Dirección'
-  }
-];
-
 
 var cardContainer = document.getElementById('card-container');
 
@@ -69,7 +12,9 @@ function validateLogin() {
 }
 function singOut() {
   sessionStorage.setItem("sesion", "false");
-  console.log(sessionStorage.setItem("sesion", "false"))
+  sessionStorage.setItem("sesion","");    
+  sessionStorage.setItem("rol","");  
+  sessionStorage.setItem("nombre","");         
   window.location.href = "login.html";
 }
 validateLogin();

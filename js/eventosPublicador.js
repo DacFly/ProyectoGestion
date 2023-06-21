@@ -1,131 +1,170 @@
-var contenidoTablaResultado = document.querySelector('#resultados');
+var contenidoTablaResultado = document.querySelector("#resultados");
 function cargarEventos2() {
   console.log(sessionStorage.getItem("id"));
-    fetch("https://localhost:7088/Evento/eventosDeUsuario/"+sessionStorage.getItem("id"), {
-      method: 'GET'
-    })
-      .then(response => response.json())
-        .then(datos => {
-          for (const valor of datos) {
-            contenidoTablaResultado.innerHTML += `
+  fetch(
+    "https://localhost:7088/Evento/eventosDeUsuario/" +
+      sessionStorage.getItem("id"),
+    {
+      method: "GET",
+    }
+  )
+    .then((response) => response.json())
+    .then((datos) => {
+      contenidoTablaResultado.innerHTML = ``;
+      for (const valor of datos) {
+        contenidoTablaResultado.innerHTML += `
             <tr class="table-primary" >
                 <td>${valor.idEvento}</td>
                 <td>${valor.titulo}</td>
-                <td>${valor.fechaPublicacion}</td>
-                <td>${valor.fechaEvento}</td>
+                <td>${valor.fechaPublicacion.split("T")[0]}</td>
+                <td>${valor.fechaEvento.split("T")[0]}</td>
                 <td>${valor.hora}</td>
                 <td>${valor.descripcion}</td>
                 <td>${valor.direccion}</td>
                
                 <td>
-                  <a name="" id="" class="btn btn-danger" onclick="eliminar('${valor.idEvento}')" role="button">Borrar</a>
-                  ||
-                  <a name="" id="" class="btn btn-primary" onclick="editar(${sessionStorage.getItem("id")},'${valor.idEvento}', '${valor.titulo}', '${valor.fechaPublicacion}', '${valor.fechaEvento}', '${valor.hora}', '${valor.descripcion}', '${valor.direccion}')" role="button">Editar</a>
+                  <a name="" id="" class="btn btn-danger" onclick="eliminar('${
+                    valor.idEvento
+                  }')" role="button">Borrar</a>
+                  
+                  <a name="" id="" class="btn btn-primary" onclick="editar(${sessionStorage.getItem(
+                    "id"
+                  )},'${valor.idEvento}', '${valor.titulo}', '${
+          valor.fechaPublicacion
+        }', '${valor.fechaEvento}', '${valor.hora}', '${valor.descripcion}', '${
+          valor.direccion
+        }')" role="button">Editar</a>
                 </td>
-            </tr>`; 
+            </tr>`;
+      }
+    })
+    .catch((error) => {
+      // Aquí puedes manejar los errores de la solicitud
+      console.error(error);
+    });
+}
+cargarEventos2();
+
+const modalEditar = new bootstrap.Modal(
+  document.getElementById("modalEditarEvento")
+);
+var formulario = document.getElementById("frmEventos");
+
+function editar(
+  idUsuario,
+  idEvento,
+  titulo,
+  fechaPublicacion,
+  fechaEvento,
+  hora,
+  descripcion,
+  direccion
+) {
+  document.getElementById("idUsuario").value = idUsuario;
+  document.getElementById("idEvento").value = idEvento;
+  document.getElementById("titulo").value = titulo;
+  document.getElementById("fechaPublicacion").value = fechaPublicacion;
+  document.getElementById("fechaEvento").value = fechaEvento;
+  document.getElementById("hora").value = hora;
+  document.getElementById("descripcion").value = descripcion;
+  document.getElementById("direccion").value = direccion;
+  modalEditar.show();
+}
+
+formulario.addEventListener("submit", function (e) {
+  e.preventDefault();
+
+  var idEvento = parseInt(document.getElementById("idEvento").value);
+  var titulo = document.getElementById("titulo").value;
+  var fechaPublicacion = document.getElementById("fechaPublicacion").value;
+  var fechaEvento = document.getElementById("fechaEvento").value;
+  var hora = document.getElementById("hora").value;
+  var descripcion = document.getElementById("descripcion").value;
+  var direccion = document.getElementById("direccion").value;
+  var id = parseInt(sessionStorage.getItem("id"));
+
+  var datosenviar = {
+    idEvento: idEvento,
+    usuarioId: id,
+    titulo: titulo,
+    fechaPublicacion: fechaPublicacion,
+    fechaEvento: fechaEvento,
+    hora: hora,
+    descripcion: descripcion,
+    direccion: direccion,
+  };
+  console.log(datosenviar);
+  fetch("https://localhost:7088/Evento/EditarEvento", {
+    method: "PUT",
+    headers: { "content-type": "application/json " },
+    body: JSON.stringify(datosenviar),
+  }) //url de peticion de datos
+    .then((respuesta) => {
+      console.log(respuesta.status);
+      if (respuesta.status == 204) {
+        document.getElementById("titulo").value = "";
+        document.getElementById("fechaPublicacion").value = "";
+        document.getElementById("fechaEvento").value = "";
+        document.getElementById("hora").value = "";
+        document.getElementById("descripcion").value = "";
+        document.getElementById("direccion").value = "";
+        
+        swal(
+          "Se ha modificado correctamente!",
+          "Presiona el boton!",
+          "success"
+        )
+        .then((willDelete) => {
+          if (willDelete) {
+      
+            modalEditar.hide();
+            cargarEventos2();
+          } 
+        });
+      }
+      else{
+        swal("No se ha modificado!", "Presiona el boton!", "error")
+      }
+    })
+    .catch(console.log); //muestra errores
+});
+
+function eliminar(idEvento) {
+  swal({
+    title: "Esta seguro que quiere eliminarlo?",
+    text: "Una vez borrado no se podra recuperar los datos",
+    icon: "warning",
+    buttons: true,
+    dangerMode: true,
+  }).then((willDelete) => {
+    if (willDelete) {
+
+      console.log(idEvento);
+      var idUsuario = parseInt(sessionStorage.getItem("id"));
+      fetch(
+        "https://localhost:7088/Evento/EliminarEvento/" + idEvento+"/"+idUsuario,
+        {
+          method: "DELETE"
+          
+        }
+      ) //url de peticion de datos
+        .then(datosrepuesta => { 
+          if(datosrepuesta.status == 204){
+            swal("Eliminado correctamente", {
+              icon: "success",
+            });
+            window.location = "VerEventosPublicador.html";
+          }else{
+            swal("No se borraron los datos");
           }
         })
-        .catch(error => {
-          // Aquí puedes manejar los errores de la solicitud
-          console.error(error);
-        })
-  }
-  cargarEventos2()
-
-  const modalEditar = new bootstrap.Modal(document.getElementById('modalEditarEvento'));
-  var formulario = document.getElementById('frmEventos');
-
-  function editar(idUsuario,idEvento, titulo, fechaPublicacion, fechaEvento,hora,descripcion,direccion){
-    document.getElementById('idUsuario').value = idUsuario;
-    document.getElementById('idEvento').value = idEvento;
-    document.getElementById('titulo').value = titulo;
-    document.getElementById('fechaPublicacion').value = fechaPublicacion;
-    document.getElementById('fechaEvento').value = fechaEvento;
-    document.getElementById('hora').value = hora;
-    document.getElementById('descripcion').value = descripcion;
-    document.getElementById('direccion').value = direccion;
-    modalEditar.show();
-  }
-
-  formulario.addEventListener('submit', function(e) {
-     e.preventDefault();
-
-     var idEvento=parseInt(document.getElementById('idEvento').value);
-     var titulo = document.getElementById('titulo').value;
-     var fechaPublicacion = document.getElementById('fechaPublicacion').value;
-     var fechaEvento= document.getElementById('fechaEvento').value;
-     var hora = document.getElementById('hora').value;
-     var descripcion = document.getElementById('descripcion').value;
-     var direccion = document.getElementById('direccion').value;
-     var id = parseInt(sessionStorage.getItem("id"));
-
-      var datosenviar = {
-        idEvento:idEvento,
-        usuarioId:id,
-        titulo:titulo,
-        fechaPublicacion:fechaPublicacion,
-        fechaEvento:fechaEvento,
-        hora:hora,
-        descripcion:descripcion,
-        direccion:direccion
-      }
-      console.log(datosenviar);
-       fetch("https://localhost:7088/Evento/EditarEvento",
-        {
-           method:"PUT",
-           headers:{'content-type':'application/json '},
-          body:JSON.stringify(datosenviar)
-       })//url de peticion de datos
-       .then((respuesta) => {            
-        if(respuesta.status==200){
-
-          document.getElementById("titulo").value="";
-          document.getElementById("fechaPublicacion").value="";
-          document.getElementById("fechaEvento").value="";
-          document.getElementById("hora").value="";
-          document.getElementById("descripcion").value="";
-          document.getElementById("direccion").value="";
-          modalEditar.hide();
-          swal("Se ha modificado correctamente!", "Presiona el boton!", "success");
-          cargarEventos2()
-        }  
-       })
-       .catch(swal("No se ha modificado!", "Presiona el boton!", "error"))//muestra errores 
-       
+        .catch(console.log); //muestra errores
+      //Muestra el resultado de la peticion
+    } 
   });
 
-
-  function eliminar(idEvento){
-    swal({
-title: "Esta seguro que quiere eliminarlo?",
-text: "Una vez borrado no se podra recuperar los datos",
-icon: "warning",
-buttons: true,
-dangerMode: true,
-})
-.then((willDelete) => {
-if (willDelete) {
-  swal("Eliminado correctamente", {
-    icon: "success", 
-  });window.location = 'VerEventosPublicador.html'//Muestra el resultado de la peticion
-} else {
-  swal("No se borraron los datos");
-}
-});
-//       apis/BorrarCursos.php
-// { "id":2 }
-var datosenviar = {
-  idEvento:idEvento
-      }
- fetch("https://localhost:7088/Evento/EliminarEvento/" + sessionStorage.getItem("id"),
-      {
-          method:"POST",
-          body:JSON.stringify(datosenviar)
-      })//url de peticion de datos
-      .then(respuesta => respuesta.json())//recibe los datos en formato json
-      .then((datosrepuesta) => {            
-           
-       
-      })
-      .catch(console.log)//muestra errores
+  var datosenviar = {
+    idEvento: idEvento,
+  };
+  
 }

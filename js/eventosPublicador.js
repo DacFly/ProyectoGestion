@@ -71,7 +71,7 @@ function editar(
   modalEditar.show();
 }
 
-formulario.addEventListener("submit", function (e) {
+formulario.addEventListener("submit", function (e) { 
   e.preventDefault();
 
   var idEvento = parseInt(document.getElementById("idEvento").value);
@@ -153,6 +153,7 @@ function eliminar(idEvento) {
             swal("Eliminado correctamente", {
               icon: "success",
             });
+            cargarEventos2();
             window.location = "VerEventosPublicador.html";
           }else{
             swal("No se borraron los datos");

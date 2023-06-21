@@ -34,7 +34,7 @@ function cargarEventos() {
               <li class="list-group-item">Dirección: ${ev.direccion} </li>
             </ul>
             <div class="card-body">
-              <button class="btn btn-lg" type="button" style="background-color: #9dd1cd;">Inscribirse</button>
+              <button class="btn btn-lg" type="button" onclick="Postularse('${ev.idEvento}')" style="background-color: #9dd1cd;">Inscribirse</button>
               ${ sessionStorage.getItem("rol")==="admin" ? '<button class="btn btn-lg btn-danger" type="button"">Eliminar</button>':''}
             </div>
           </div>  
@@ -50,4 +50,24 @@ function cargarEventos() {
 
 cargarEventos()
 
+function Postularse(idEvento) {
+  var datosenviar = {
+    idEvento: idEvento,
+    idUsuario: sessionStorage.getItem("id")
+  };
 
+  fetch("https://localhost:7088/EventoUsuario/CrearEventoUsuario", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(datosenviar)
+  })
+    .then(response => response.json())
+    .then(data => {
+      // Manejar la respuesta o redirigir si es necesario
+    })
+    .catch(error => {
+      console.error(error);
+    });
+}

@@ -166,5 +166,9 @@ function eliminar(idEvento) {
   var datosenviar = {
     idEvento: idEvento,
   };
-  
+
+}
+
+function cerrarModalModificarEvento(){
+  modalEditar.hide();
 }

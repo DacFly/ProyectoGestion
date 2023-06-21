@@ -1,8 +1,10 @@
+
+
 var contenidoTablaResultado = document.querySelector("#resultados");
 function cargarEventos2() {
   console.log(sessionStorage.getItem("id"));
   fetch(
-    "https://localhost:7088/Usuario/listaUsuario/" +
+    "https://localhost:7088/Usuario/BuscarUsuario/" +
       sessionStorage.getItem("id"),
     {
       method: "GET",

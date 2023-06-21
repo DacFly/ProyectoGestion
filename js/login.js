@@ -14,14 +14,15 @@ console.log(correo+""+contrasena);
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' }
     })
-    .then(respuesta => {
-        if (respuesta.status == 200) {
-            console.log("Me cago enla puta ")
-            sessionStorage.setItem("sesion","true");    
-            window.location.href="index.html";
-        }
-    })
-    .catch(console.log)
+    .then(respuesta => respuesta.json())
+    .then(respuesta =>{
+        var usuario = respuesta;
+        sessionStorage.setItem("sesion","true");    
+        sessionStorage.setItem("rol",usuario.rol);  
+        sessionStorage.setItem("nombre",usuario.nombre);    
+        sessionStorage.setItem("sesion","true");    
+        window.location.href="index.html";
+    }).catch(console.log)
     
 }
     

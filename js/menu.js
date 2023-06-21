@@ -8,9 +8,9 @@ contenido.innerHTML += `<div class="container-fluid">
         <nav class="mx-auto site-navigation">
           <ul class="site-menu js-clone-nav d-none d-xl-block ml-0 pl-0">
             <li><a href="index.html" class="nav-link ">Eventos</a></li>
-            <li><a href="#" onclick="mostrarModalCrearEvento()">Agregar Eventos</a></li>
+           ${sessionStorage.getItem("rol")==="publicador" ? '<li><a href="#" onclick="mostrarModalCrearEvento()">Agregar Eventos</a></li>':''} 
             <li><a href="VerEventosPublicador.html">Mis eventos</a></li>
-            <li class="d-lg-none"><a href="login.html">Log Out</a></li>
+            <li class="d-lg-none"><a id="logOut" onclick="singOut()">Log Out</a></li>
           </ul>
         </nav>
         
@@ -20,12 +20,12 @@ contenido.innerHTML += `<div class="container-fluid">
                 <nav class="mx-auto   site-navigation">
                   <ul class="site-menu js-clone-nav d-none d-xl-block ml-0 pl-0">
                     <li class="has-children">
-                      <a href="#" class="div-drop">Opciones</a>
+                      <a href="#" class="div-drop">${sessionStorage.getItem("nombre")}</a>
                       <ul class="dropdown">
                         <li><a href="services.html">Modificar Perfil</a></li>
                         <li><a href="service-single.html">Eliminar Perfil</a></li>
                         <li><a href="blog-single.html">Cerrar Sección</a></li>
-                        <li>                        <a href="login.html" class="btn btn-danger ">Log Out</a>
+                        <li> <a onclick="singOut()" class="btn btn-danger >Log Out</a>
                         </li>
                       </ul>
                     </li>

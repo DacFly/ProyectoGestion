@@ -57,7 +57,6 @@ var objetos = [
 ];
 
 
-
 var cardContainer = document.getElementById('card-container');
 
 for (var i = 0; i < objetos.length; i++) {
@@ -138,10 +137,14 @@ for (var i = 0; i < objetos.length; i++) {
 
 function validateLogin()
 {
-    console.log( )
-    if (sessionStorage.getItem("sesion")==null) {
+    console.log( sessionStorage.getItem("sesion"))
+    if (sessionStorage.getItem("sesion")==null  || sessionStorage.getItem("sesion")=="false") {
         window.location.href="login.html";
-    }
+    }1
 } 
-
+function singOut(){
+  sessionStorage.setItem("sesion","false");
+  console.log( sessionStorage.setItem("sesion","false"))
+  window.location.href="login.html";
+}
 validateLogin();

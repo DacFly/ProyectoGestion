@@ -34,11 +34,11 @@ function cargarEventos2() {
   
   cargarEventos2()
 
-  const myModal = new bootstrap.Modal(document.getElementById('modalEditarEvento'));
+  const modalEditar = new bootstrap.Modal(document.getElementById('modalEditarEvento'));
   var formulario = document.getElementById('frmEventos');
 
   formulario.addEventListener('submit', function(e) {
-      e.preventDefault();
+     e.preventDefault();
      var idEvento=document.getElementById('idEvento').value;;
      var titulo = document.getElementById('titulo').value;
      var fechaPublicacion = document.getElementById('fechaPublicacion').value;
@@ -46,9 +46,11 @@ function cargarEventos2() {
      var hora = document.getElementById('hora').value;
      var descripcion = document.getElementById('descripcion').value;
      var direccion = document.getElementById('direccion').value;
-     swal("Se ha modificado correctamente!", "Presiona el boton!", "success");
+    
+    var id = sessionStorage.getItem("id");
       var datosenviar = {
         idEvento:idEvento,
+        usuarioId:id,
         titulo:titulo,
         fechaPublicacion:fechaPublicacion,
         fechaEvento:fechaEvento,
@@ -65,14 +67,17 @@ function cargarEventos2() {
        .then(respuesta => respuesta.json())//recibe los datos en formato json
        .then((datosrepuesta) => {            
             console.log('Datos',datosrepuesta)//Muestra el resultado de la peticion
+            document.getElementById("titulo").value="";
+            document.getElementById("fechaPublicacion").value="";
+            document.getElementById("fechaEvento").value="";
+            document.getElementById("hora").value="";
+            document.getElementById("descripcion").value="";
+            document.getElementById("direccion").value="";
+            swal("Se ha modificado correctamente!", "Presiona el boton!", "success");
+            modalEditar.hide();
        })
        .catch(console.log)//muestra errores
-                  document.getElementById("titulo").value="";
-                  document.getElementById("fechaPublicacion").value="";
-                  document.getElementById("fechaEvento").value="";
-                  document.getElementById("hora").value="";
-                  document.getElementById("descripcion").value="";
-                  document.getElementById("direccion").value="";
+                 
   });
 
 
@@ -86,6 +91,9 @@ function cargarEventos2() {
     document.getElementById('descripcion').value = descripcion;
     document.getElementById('direccion').value = direccion;
   }
+
+
+
 
   function eliminar(idEvento){
     swal({

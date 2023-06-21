@@ -59,92 +59,53 @@ var objetos = [
 
 var cardContainer = document.getElementById('card-container');
 
-for (var i = 0; i < objetos.length; i++) {
-  var objeto = objetos[i];
-  
-  var cardColumn = document.createElement('div');
-  cardColumn.classList.add('col-md-4', 'mb-4');
-  
-  var card = document.createElement('div');
-  card.classList.add('card');
-  card.style.width = '20rem';
 
-  
-  var cardBody = document.createElement('div');
-  cardBody.classList.add('card-body');
-  
-  var cardTitle = document.createElement('h5');
-  cardTitle.classList.add('card-title');
-  cardTitle.textContent = objeto.titulo;
-  
-  var cardText = document.createElement('p');
-  cardText.classList.add('card-text');
-  cardText.textContent = objeto.descripcion;
-  
-  cardBody.appendChild(cardTitle);
-  cardBody.appendChild(cardText);
-  
-  var listGroup = document.createElement('ul');
-  listGroup.classList.add('list-group', 'list-group-flush');
-  
-  var listItem1 = document.createElement('li');
-  listItem1.classList.add('list-group-item');
-  listItem1.textContent = 'ID: ' + objeto.id;
-  
-  var listItem2 = document.createElement('li');
-  listItem2.classList.add('list-group-item');
-  listItem2.textContent = 'Fecha de publicación: ' + objeto.fechaPublicacion;
-  
-  var listItem3 = document.createElement('li');
-  listItem3.classList.add('list-group-item');
-  listItem3.textContent = 'Fecha del evento: ' + objeto.fechaEvento;
-  
-  var listItem4 = document.createElement('li');
-  listItem4.classList.add('list-group-item');
-  listItem4.textContent = 'Hora: ' + objeto.hora;
-  
-  var listItem5 = document.createElement('li');
-  listItem5.classList.add('list-group-item');
-  listItem5.textContent = 'Dirección: ' + objeto.direccion;
-  
-  listGroup.appendChild(listItem1);
-  listGroup.appendChild(listItem2);
-  listGroup.appendChild(listItem3);
-  listGroup.appendChild(listItem4);
-  listGroup.appendChild(listItem5);
-  
-  var cardBody2 = document.createElement('div');
-  cardBody2.classList.add('card-body');
-  
-  var inscribirseButton = document.createElement('button');
-  inscribirseButton.classList.add('btn', 'btn-lg');
-  inscribirseButton.setAttribute('type', 'button');
-  
-  inscribirseButton.style.backgroundColor = "#9dd1cd";
-  inscribirseButton.textContent = 'Inscribirse';
-  
-  cardBody2.appendChild(inscribirseButton);
-  
-  card.appendChild(cardBody);
-  card.appendChild(listGroup);
-  card.appendChild(cardBody2);
-  
-  cardColumn.appendChild(card);
-  
-  cardContainer.appendChild(cardColumn);
+
+function validateLogin() {
+  console.log(sessionStorage.getItem("sesion"))
+  if (sessionStorage.getItem("sesion") == null || sessionStorage.getItem("sesion") == "false") {
+    window.location.href = "login.html";
+  } 1
 }
-
-
-function validateLogin()
-{
-    console.log( sessionStorage.getItem("sesion"))
-    if (sessionStorage.getItem("sesion")==null  || sessionStorage.getItem("sesion")=="false") {
-        window.location.href="login.html";
-    }1
-} 
-function singOut(){
-  sessionStorage.setItem("sesion","false");
-  console.log( sessionStorage.setItem("sesion","false"))
-  window.location.href="login.html";
+function singOut() {
+  sessionStorage.setItem("sesion", "false");
+  console.log(sessionStorage.setItem("sesion", "false"))
+  window.location.href = "login.html";
 }
 validateLogin();
+
+function cargarEventos() {
+  fetch("https://localhost:7088/Evento/eventosNoInscritos/" + sessionStorage.getItem("id"), {
+    method: 'GET'
+  })
+    .then(response => response.json())
+      .then(datos => {
+        for (const ev of datos) {
+          cardContainer.innerHTML += `
+        <div class="col-md-4 mb-4">
+          <div class="card" style="width: 20rem;">
+            <div class="card-body">
+              <h5 class="card-title">${ev.titulo}</h5>
+              <p class="card-text">${ev.descripcion}d</p>
+            </div>
+            <ul class="list-group list-group-flush">  
+              <li class="list-group-item">Fecha del Evento:${ev.fechaEvento} </li>
+              <li class="list-group-item">Fecha Finalizacion:${ev.fechaEvento} </li>
+              <li class="list-group-item">Hora: ${ev.fechaEvento}</li>
+              <li class="list-group-item">Dirección: ${ev.direccion} </li>
+            </ul>
+            <div class="card-body">
+              <button class="btn btn-lg" type="button" style="background-color: #9dd1cd;">Inscribirse</button>
+            </div>
+          </div>  
+        </div>
+        `;
+        }
+      })
+      .catch(error => {
+        // Aquí puedes manejar los errores de la solicitud
+        console.error(error);
+      })
+}
+
+cargarEventos()

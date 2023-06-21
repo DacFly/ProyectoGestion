@@ -96,7 +96,7 @@ function cargarEventos() {
             </ul>
             <div class="card-body">
               <button class="btn btn-lg" type="button" style="background-color: #9dd1cd;">Inscribirse</button>
-              ${ sessionStorage.getItem("rol")==="admin" ? '<button class="btn btn-lg btn-danger" type="button" style="background-color: #9dd1cd;">Inscribirse</button>':''}
+              ${ sessionStorage.getItem("rol")==="admin" ? '<button class="btn btn-lg btn-danger" type="button"">Eliminar</button>':''}
             </div>
           </div>  
         </div>

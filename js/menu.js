@@ -8,7 +8,7 @@ contenido.innerHTML += `<div class="container-fluid">
         <nav class="mx-auto site-navigation">
           <ul class="site-menu js-clone-nav d-none d-xl-block ml-0 pl-0">
             <li><a href="index.html" class="nav-link ">Eventos</a></li>
-           ${sessionStorage.getItem("rol")==="publicador" ? '<li><a href="#" onclick="mostrarModalCrearEvento()">Agregar Eventos</a></li>':''} 
+            ${sessionStorage.getItem("rol") === "publicador" || sessionStorage.getItem("rol") === "admin" ? '<li><a href="#" onclick="mostrarModalCrearEvento()">Agregar Eventos</a></li>' : ''}
             <li><a href="VerEventosPublicador.html">Mis eventos</a></li>
             <li class="d-lg-none"><a id="logOut" onclick="singOut()">Log Out</a></li>
           </ul>

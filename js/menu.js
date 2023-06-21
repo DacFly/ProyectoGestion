@@ -81,7 +81,6 @@ function crearNuevoEv() {
     descripcion: descripcion,
     direccion: direccion
   };
-  console.log(nuevoevento)
   // Realizar la solicitud POST a la API para crear el evento
   fetch('https://localhost:7088/Evento/CrearEvento', {
     method: "POST",

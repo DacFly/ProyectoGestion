@@ -1,5 +1,7 @@
-var contenidoTablaResultado = document.querySelector("#resultados");
-function cargarEventos2() {
+
+
+function cargarEventosSubidos() {
+  var contenidoTablaResultado = document.querySelector("#resultados");
   console.log(sessionStorage.getItem("id"));
   fetch(
     "https://localhost:7088/Evento/eventosDeUsuario/" +
@@ -43,7 +45,48 @@ function cargarEventos2() {
       console.error(error);
     });
 }
-cargarEventos2();
+
+
+function cargarEventosAsistir() {
+  var contenidoTablaAsistir = document.querySelector("#resultados2");
+  console.log(sessionStorage.getItem("id"));
+  fetch(
+    "https://localhost:7088/Evento/ObtenerEventosPorUsuario/" +
+      sessionStorage.getItem("id"),
+    {
+      method: "GET",
+    }
+  )
+    .then((response) => response.json())
+    .then((datos) => {
+      contenidoTablaAsistir.innerHTML = ``;
+      for (const valor of datos) {
+        contenidoTablaAsistir.innerHTML += `
+            <tr class="table-primary" >
+                <td>${valor.idEvento}</td>
+                <td>${valor.titulo}</td>
+                <td>${valor.fechaPublicacion.split("T")[0]}</td>
+                <td>${valor.fechaEvento.split("T")[0]}</td>
+                <td>${valor.hora}</td>
+                <td>${valor.descripcion}</td>
+                <td>${valor.direccion}</td>
+               
+                <td>
+                  <a name="" id="" class="btn btn-danger" onclick="eliminar('${ valor.idEvento }')" role="button">Quitar</a>`;
+      }
+    })
+    .catch((error) => {
+      // Aquí puedes manejar los errores de la solicitud
+      console.error(error);
+    });
+}
+
+function cargarEventos(){
+  cargarEventosSubidos();
+  cargarEventosAsistir();
+}
+
+cargarEventos();
 
 const modalEditar = new bootstrap.Modal(
   document.getElementById("modalEditarEvento")

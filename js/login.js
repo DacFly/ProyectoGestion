@@ -1,8 +1,5 @@
 var btn = document.getElementById('btn');
 
-var estado = false;
-
-
 function logueo(){
             // Datos del formulario
             var correo =document.getElementById("user").value;

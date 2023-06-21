@@ -1,16 +1,15 @@
 var contenidoTablaResultado = document.querySelector('#resultados');
 function cargarEventos2() {
   console.log(sessionStorage.getItem("id"));
-    fetch("https://localhost:7088/Evento/eventosDeUsuario/" + sessionStorage.getItem("id"), {
+    fetch("https://localhost:7088/Evento/eventosDeUsuario/"+sessionStorage.getItem("id"), {
       method: 'GET'
     })
-    
       .then(response => response.json())
         .then(datos => {
           for (const valor of datos) {
             contenidoTablaResultado.innerHTML += `
             <tr class="table-primary" >
-                <td scope="row">${valor.idEvento}</td>
+                <td>${valor.idEvento}</td>
                 <td>${valor.titulo}</td>
                 <td>${valor.fechaPublicacion}</td>
                 <td>${valor.fechaEvento}</td>
@@ -21,7 +20,7 @@ function cargarEventos2() {
                 <td>
                   <a name="" id="" class="btn btn-danger" onclick="eliminar('${valor.idEvento}')" role="button">Borrar</a>
                   ||
-                  <a name="" id="" class="btn btn-primary" onclick="editar('${valor.idEvento}', '${valor.titulo}', '${valor.fechaPublicacion}', '${valor.fechaEvento}', '${valor.hora}', '${valor.descripcion}', '${valor.direccion}')" role="button">Editar</a>
+                  <a name="" id="" class="btn btn-primary" onclick="editar(${sessionStorage.getItem("id")},'${valor.idEvento}', '${valor.titulo}', '${valor.fechaPublicacion}', '${valor.fechaEvento}', '${valor.hora}', '${valor.descripcion}', '${valor.direccion}')" role="button">Editar</a>
                 </td>
             </tr>`; 
           }
@@ -31,23 +30,35 @@ function cargarEventos2() {
           console.error(error);
         })
   }
-  
   cargarEventos2()
 
   const modalEditar = new bootstrap.Modal(document.getElementById('modalEditarEvento'));
   var formulario = document.getElementById('frmEventos');
 
+  function editar(idUsuario,idEvento, titulo, fechaPublicacion, fechaEvento,hora,descripcion,direccion){
+    document.getElementById('idUsuario').value = idUsuario;
+    document.getElementById('idEvento').value = idEvento;
+    document.getElementById('titulo').value = titulo;
+    document.getElementById('fechaPublicacion').value = fechaPublicacion;
+    document.getElementById('fechaEvento').value = fechaEvento;
+    document.getElementById('hora').value = hora;
+    document.getElementById('descripcion').value = descripcion;
+    document.getElementById('direccion').value = direccion;
+    modalEditar.show();
+  }
+
   formulario.addEventListener('submit', function(e) {
      e.preventDefault();
-     var idEvento=document.getElementById('idEvento').value;;
+
+     var idEvento=parseInt(document.getElementById('idEvento').value);
      var titulo = document.getElementById('titulo').value;
      var fechaPublicacion = document.getElementById('fechaPublicacion').value;
      var fechaEvento= document.getElementById('fechaEvento').value;
      var hora = document.getElementById('hora').value;
      var descripcion = document.getElementById('descripcion').value;
      var direccion = document.getElementById('direccion').value;
-    
-    var id = sessionStorage.getItem("id");
+     var id = parseInt(sessionStorage.getItem("id"));
+
       var datosenviar = {
         idEvento:idEvento,
         usuarioId:id,
@@ -61,38 +72,27 @@ function cargarEventos2() {
       console.log(datosenviar);
        fetch("https://localhost:7088/Evento/EditarEvento",
         {
-           method:"POST",
+           method:"PUT",
+           headers:{'content-type':'application/json '},
           body:JSON.stringify(datosenviar)
        })//url de peticion de datos
-       .then(respuesta => respuesta.json())//recibe los datos en formato json
-       .then((datosrepuesta) => {            
-            console.log('Datos',datosrepuesta)//Muestra el resultado de la peticion
-            document.getElementById("titulo").value="";
-            document.getElementById("fechaPublicacion").value="";
-            document.getElementById("fechaEvento").value="";
-            document.getElementById("hora").value="";
-            document.getElementById("descripcion").value="";
-            document.getElementById("direccion").value="";
-            swal("Se ha modificado correctamente!", "Presiona el boton!", "success");
-            modalEditar.hide();
+       .then((respuesta) => {            
+        if(respuesta.status==200){
+
+          document.getElementById("titulo").value="";
+          document.getElementById("fechaPublicacion").value="";
+          document.getElementById("fechaEvento").value="";
+          document.getElementById("hora").value="";
+          document.getElementById("descripcion").value="";
+          document.getElementById("direccion").value="";
+          modalEditar.hide();
+          swal("Se ha modificado correctamente!", "Presiona el boton!", "success");
+          cargarEventos2()
+        }  
        })
-       .catch(console.log)//muestra errores
-                 
+       .catch(swal("No se ha modificado!", "Presiona el boton!", "error"))//muestra errores 
+       
   });
-
-
-  function editar(idEvento, titulo, fechaPublicacion, fechaEvento,hora,descripcion,direccion){
-    myModal.show();
-    document.getElementById('idEvento').value = idEvento;
-    document.getElementById('titulo').value = titulo;
-    document.getElementById('fechaPublicacion').value = fechaPublicacion;
-    document.getElementById('fechaEvento').value = fechaEvento;
-    document.getElementById('hora').value = hora;
-    document.getElementById('descripcion').value = descripcion;
-    document.getElementById('direccion').value = direccion;
-  }
-
-
 
 
   function eliminar(idEvento){

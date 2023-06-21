@@ -20,6 +20,8 @@
   <!-- Style -->
   <link rel="stylesheet" href="css/style.css">
    <!-- Bootstrap CSS v5.2.1 -->
+   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
 
   <style>
       #botoncierre{
@@ -86,13 +88,14 @@
     <div class="modal-dialog modal-dialog-centered modal-md" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="modalTitleId"> Agregar Evento</h5>
+          <h5 class="modal-title" id="modalTitleId"> Modificar Eventos</h5>
           <button type="button" class="btn-close" aria-label="Close" >x</button>
         </div>
         <div class="modal-body" style="width: auto;">
 
           <form class="m-needs-validation" novalidate id="frmEventos">
             <input type="text" class="form-control" id="idEvento" required hidden>
+            <input type="text" class="form-control" id="idUsuario" required hidden>
             
             <div class="row">
               <div class="col-md-12">
@@ -163,6 +166,88 @@
       </div>
     </div>
   </div>
+
+  
+  <div class="modal " id="modalCrearEvento" tabindex="" data-bs-backdrop="static" data-bs-keyboard="false"
+    role="dialog" aria-labelledby="modalTitleId" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-md" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modalTitleId"> Agregar Evento</h5>
+          <button type="button" class="btn-close" aria-label="Close" onclick="cerrarModalCrearEvento()" style="background-color: transparent; border: 0;">X</button>
+        </div> 
+        <div class="modal-body" style="width: auto;">
+
+          <form class="m-needs-validation" novalidate id="frmEventos">
+            <input type="text" class="form-control" id="m-idEvento" required hidden>
+
+            <div class="row">
+              <div class="col-md-12">
+                <div class="form-group">
+                  <label for="" class="form-label">Titulo</label>
+                  <input type="text" class="form-control" name="evento" id="evento" aria-describedby="helpId"
+                    placeholder="Titulo del evento">
+                  <small id="helpId" class="form-text text-muted"> Ingresa el titulo del evento</small>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                <div class="form-group">
+                  <label for="" class="form-label">Titulo</label>
+                  <input type="text" class="form-control" name="evento" id="direccion" aria-describedby="helpId"
+                    placeholder="Titulo del evento">
+                  <small id="helpId" class="form-text text-muted"> Ingrese direccion </small>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                <div class="form-group">
+                  <label for="" class="form-label">Fecha Publicacion</label>
+                  <input type="Date" class="form-control" name="fechaPublicacion" id="fechaPublicacion"
+                    aria-describedby="helpId" placeholder="Fecha de Publicacion">
+                  <small id="helpId" class="form-text text-muted"> Ingresa la fecha de publicacion del evento</small>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                <div class="form-group">
+                  <label for="" class="form-label">Fecha Evento</label>
+                  <input type="date" class="form-control" name="fechaEvento" id="fechaEvento" aria-describedby="helpId"
+                    placeholder="Fecha del evento">
+                  <small id="helpId" class="form-text text-muted"> Ingresa la fecha del evento</small>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                <div class="form-group">
+                  <label for="" class="form-label">Hora</label>
+                  <input type="time" class="form-control" name="hora" id="hora" aria-describedby="helpId"
+                    placeholder="Hora del evento">
+                  <small id="helpId" class="form-text text-muted"> Ingresa la hora del evento</small>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                <div class="form-group text-align-center">
+                    
+                </div>
+              </div>
+            </div>
+            <div class="form-group form-check p-2" style="text-align: left;">
+              <button type="button" class="btn btn-primary" onclick="crearNuevoEv()">
+                Agregar
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
   <footer>
     <div id="footer"></div>
   <script src="js/footer.js"></script>
@@ -174,12 +259,10 @@
   <script src="js/jquery.sticky.js"></script>
   <script src="js/main.js"></script>
   <script src="js/menu.js "></script>
-  <script src="js/funciones.js "></script>
-  <script src="js/index.js "></script>
   <script src="js/eventosPublicador.js "></script>
 </body>
 
-</html>
+</html> 
 
 
 

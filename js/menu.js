@@ -24,8 +24,7 @@ contenido.innerHTML += `<div class="container-fluid">
                       <ul class="dropdown">
                         <li><a href="services.html">Modificar Perfil</a></li>
                         <li><a href="service-single.html">Eliminar Perfil</a></li>
-                        <li><a href="blog-single.html">Cerrar Sección</a></li>
-                        <li> <a onclick="singOut()" class="btn btn-danger >Log Out</a>
+                        <li><a  onclick="singOut()">Cerrar Sesion</a></li>
                         </li>
                       </ul>
                     </li>

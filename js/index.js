@@ -34,6 +34,7 @@ function cargarEventos() {
             <div class="card-body">
               <button class="btn btn-primary" type="button " onclick="AsistirEvento(${ev.idEvento},${sessionStorage.getItem("id")})">Inscribirse</button>
               ${sessionStorage.getItem("rol") === "admin" ? '<button class="btn  btn-danger" type="button"" onclick="eliminarEvento(' + ev.idEvento + ',' + ev.usuarioId + ')">Eliminar</button>' : ''}
+
             </div>
           </div>  
         </div>
@@ -100,5 +101,4 @@ function AsistirEvento(idEvento, idUsuario) {
     });
 }
 cargarEventos();
-
 

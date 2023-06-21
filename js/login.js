@@ -1,6 +1,6 @@
 var btn = document.getElementById('btn');
 
-
+var estado = false;
 
 
 function logueo(){
@@ -16,7 +16,8 @@ console.log(correo+""+contrasena);
     })
     .then(respuesta => {
         if (respuesta.status == 200) {
-            document.cookie = "sesion=true; path=/";
+            console.log("Me cago enla puta ")
+            sessionStorage.setItem("sesion","true");    
             window.location.href="index.html";
         }
     })

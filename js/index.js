@@ -15,6 +15,7 @@ function cargarEventos() {
   })
     .then(response => response.json())
     .then(datos => {
+      console.log(datos);
       cardContainer.innerHTML = ``;
       for (const ev of datos) {
         cardContainer.innerHTML += `
@@ -31,7 +32,7 @@ function cargarEventos() {
               <li class="list-group-item">Dirección: ${ev.direccion} </li>
             </ul>
             <div class="card-body">
-              <button class="btn btn-primary" type="button " onclick="AsistirEvento(${ev.idEvento},${ev.usuarioId})">Inscribirse</button>
+              <button class="btn btn-primary" type="button " onclick="AsistirEvento(${ev.idEvento},${sessionStorage.getItem("id")})">Inscribirse</button>
               ${sessionStorage.getItem("rol") === "admin" ? '<button class="btn  btn-danger" type="button"" onclick="eliminarEvento(' + ev.idEvento + ',' + ev.usuarioId + ')">Eliminar</button>' : ''}
             </div>
           </div>  
@@ -46,7 +47,7 @@ function cargarEventos() {
 }
 
 function eliminarEvento(idEvento, idUsuario) {
-  console.log(idUsuario)
+  console.log(idUsuario);
   swal({
     title: "Esta seguro que quiere eliminarlo?",
     text: "Una vez borrado no se podra recuperar los datos",

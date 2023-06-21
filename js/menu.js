@@ -54,9 +54,9 @@ function cerrarModalCrearEvento() {
 
 function singOut() {
   sessionStorage.setItem("sesion", "false");
-  sessionStorage.setItem("sesion", "");
   sessionStorage.setItem("rol", "");
   sessionStorage.setItem("nombre", "");
+  sessionStorage.setItem("id", "");
   window.location.href = "login.html";
 }
 
@@ -70,6 +70,7 @@ function crearNuevoEv() {
 
   // Crear el objeto de evento con los valores del formulario
   var id = parseInt(sessionStorage.getItem("id"));
+
   var nuevoEvento = {
     idEvento: 0, // Cambiar el valor del usuarioId según corresponda
     usuarioId: id,
@@ -80,6 +81,7 @@ function crearNuevoEv() {
     descripcion: descripcion,
     direccion: direccion
   };
+  console.log(nuevoevento)
   // Realizar la solicitud POST a la API para crear el evento
   fetch('https://localhost:7088/Evento/CrearEvento', {
     method: "POST",

@@ -16,9 +16,8 @@ console.log(correo+""+contrasena);
     })
     .then(respuesta => respuesta.json())
     .then(respuesta =>{
+        console.log(respuesta)
         var usuario = respuesta;
-        console.log(usuario.rol);
-        console.log(usuario.nombre);
         sessionStorage.setItem("sesion","true");    
         sessionStorage.setItem("rol",usuario.rol);  
         sessionStorage.setItem("nombre",usuario.nombre);    

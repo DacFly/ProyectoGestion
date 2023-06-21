@@ -10,7 +10,7 @@ contenido.innerHTML += `<div class="container-fluid">
           <ul class="site-menu js-clone-nav d-none d-xl-block ml-0 pl-0">
             <li><a href="index.html" class="nav-link ">Eventos</a></li>
             ${sessionStorage.getItem("rol") === "publicador" || sessionStorage.getItem("rol") === "admin" ? '<li><a href="#" onclick="mostrarModalCrearEvento()">Agregar Eventos</a></li>' : ''}
-            <li><a href="VerEventosPublicador.html" onclick="cargarEventos2()">Mis eventos </a></li>
+            <li><a href="VerEventosPublicador.html" onclick="cargarEventos()">Mis eventos </a></li>
             <li class="d-lg-none"><a id="logOut" onclick="singOut()">Log Out</a></li>
           </ul>
         </nav>
@@ -23,7 +23,7 @@ contenido.innerHTML += `<div class="container-fluid">
                     <li class="has-children">
                       <a href="#" class="div-drop">${sessionStorage.getItem("nombre")}</a>
                       <ul class="dropdown">
-                        <li><a href="services.html">Modificar Perfil</a></li>
+                        <li><a href="modificarPerfil.html">Modificar Perfil</a></li>
                         <li><a href="service-single.html">Eliminar Perfil</a></li>
                         <li><a  onclick="singOut()">Cerrar Sesion</a></li>
                         </li>

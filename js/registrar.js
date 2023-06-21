@@ -1,7 +1,6 @@
 function crearUsuario() {
-    
+   var idUsuario =  document.getElementById('evento').value;
 
-   var idUsuario =  document.getElementById('evento').value
     fetch("https://localhost:7088/Usuarios/CrearUsuario", {
       method: 'POST',
       headers: {

@@ -1,9 +1,13 @@
-document.getElementById("modificarP").addEventListener("submit", function (e) {
+var form = document.getElementById("post");
+form.addEventListener("submit", function (e) {
   e.preventDefault();
   var usuario = obtenerUsuario();
-  console.log(usuario);
+  console.log("usuario");
 
 });
+
+
+
 
 function obtenerUsuario() {
   var id = parseInt(sessionStorage.getItem("id"));

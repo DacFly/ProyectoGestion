@@ -103,24 +103,3 @@ function AsistirEvento(idEvento, idUsuario) {
 }
 cargarEventos();
 
-function Postularse(idEvento) {
-  var datosenviar = {
-    idEvento: idEvento,
-    idUsuario: sessionStorage.getItem("id")
-  };
-
-  fetch("https://localhost:7088/EventoUsuario/CrearEventoUsuario", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify(datosenviar)
-  })
-    .then(response => response.json())
-    .then(data => {
-      // Manejar la respuesta o redirigir si es necesario
-    })
-    .catch(error => {
-      console.error(error);
-    });
-}
